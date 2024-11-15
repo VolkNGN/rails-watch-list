@@ -1,0 +1,12 @@
+<h1>Nouveau signet <%= @list.name %></h1>
+<%= simple_form_for([@list, @bookmark]) do |f| %>
+  <div>
+    <%= f.label :movie_id, 'Selectionner un film' %>
+    <%= f.association :movie, collection: Movie.all, label_method: :title, value_method: :id, prompt: 'choisissez votre film' %>
+  </div>
+  <div>
+    <%= f.input :comment %>
+  </div>
+  <%= f.submit 'Créer un signet' %>
+  <%= link_to 'retour aux listes', lists_path %>
+<% end %>

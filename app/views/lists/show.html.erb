@@ -1,0 +1,12 @@
+<h1><%= @list.name %></h1>
+<h3>Movies in this list:</h3>
+<ul>
+  <% @list.bookmarks.each do |bookmark| %>
+    <li>
+      <%= bookmark.movie.title %> - <%= bookmark.comment %>
+      <%= link_to 'supprimer', bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Voulez-vous vraiment supprimer votre signet ?' } %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Ajouter un nouveau signet', new_list_bookmark_path(@list) %>
+<%= link_to 'Retour aux listes', lists_path %>
